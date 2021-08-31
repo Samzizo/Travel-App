@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-image: url(../media/travelimg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.travel {
+    /*border: 1px solid #444;*/
+    border-radius: 5px;
+    box-shadow: 5px 10px 10px #444;
+    padding: 25px;
+    margin: 15px;
+}
+
+.clientInfo {
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    display:block;
+    height: 60px;
+    width: 320px;
+    border-radius: 5px;
+    box-shadow: 5px 10px 10px #444;
+    color: #3d3af0;
+    font-size: 20px;
+}
+#city {
+    color: blue;
+}
+
+#btn {
+    width: 320px;
+    height: 50px;
+    bottom: 20px;
+    right: 10px;
+    margin-top: 15px;
+    padding: 15px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff8dc;
+    border-radius: 5px;
+    box-shadow: 5px 10px 10px #444;
+    background: linear-gradient(45deg, #00ffff, #5432e9, #444);
+    font-size: 20px;
+    font-weight: bolder;
+    &:hover {
+        color: #444;
+    }
+}
+.pixapic {
+    border-radius: 5px;
+    box-shadow: 5px 10px 10px #444;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- header title -->
+    <header>
+        <div class="title">
+            <h1>
+                Travel App <i class="fa fa-plane"></i>
+            </h1>
+        </div>
+    </header>
+    <main class="travel">
+        <div class="clientInfo">
+            <!-- Client input -->
+            <div>
+                <label for="city">Enter Your Distination:</label>
+                <br>
+                <input type="text" id="city" placeholder="Enter a city" required>
+            </div>
+            <div>
+                <label for="Departing date">Enter Departing Date:</label>
+                <br>
+                <input type="date" id="depart" placeholder="Deparing date">
+            </div>
+            <div>
+                <label for="Returning date">Enter Returning date:</label>
+                <br>
+                <input type="date" id="return" placeholder="Returning date">
+            </div>
+        </div>
+        <div>
+            <div>
+                <button id="btn" type="submit">Check</button>
+            </div>
+            <!-- trip info -->
+            <div id="response">
+                <h2>
+                    Your travel info:
+                </h2>
+                <hr>
+                <h3 id="place"> </h3>
+                <h3 id="departure"> </h3>
+            </div>
+            <div>
+                <img class="pixapic" src="" alt="" id="pixaimg">
+            </div>
+            <div id="weatherInfo">
+                <h3>Max temp: <span id="max_temp"></span></h2>
+                <h3>Min temp: <span id="min_temp"></span></h2>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- Author info -->
+        <div class="container">
+            <div class="author">
+                Samiha Amroune © 2021 Powered by
+                <a href="https://www.udacity.com/" target="_blank">Udacity</a>
+            </div>
+            <div class="info">
+                <nav class="social">
+                <a href="#" class="item"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="item"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="item"><i class="fa fa-instagram"></i></a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+          // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+</body>
+</html>

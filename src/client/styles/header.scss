@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    justify-content: center;
+    /*border: 1px solid #444;*/
+    box-shadow: 5px 10px 10px #444;
+    border-radius: 5px;
+    margin: 15px;
+    height: 200px;
+}
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    position: relative;
+}
