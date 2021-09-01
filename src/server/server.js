@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(express.static('dist'))
 console.log(__dirname)
 
-let projectData = []
+let projectData = {}
 
 // Get routes
 app.get('/', function (req, res) {
@@ -54,10 +54,11 @@ app.post('/trapp', function(req, res) {
 
 // designates what port the app will listen to for incoming requests
 const port = 8081;
-app.listen(port, function () {
+app.listen(port, startupMessage);
+function startupMessage () {
     console.log("Hi There I'm running :)");
     console.log(`running on localhost: ${port}`);
-})
+}
 
 // export app to use it in the unit testing
 

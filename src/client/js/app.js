@@ -7,20 +7,22 @@ console.log("my weatherAPi: ", weatherApi);
 const pixabayApi = "22840329-8fadc9e4ee6c098a494c3683b";
 console.log("my piaxa pic API: ", pixabayApi);
 
-/* Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
-*/
+
 //CHAIN: post & get
-
-
 // Event listener to add function to existing HTML DOM element
-document.getElementById('btn').addEventListener('click', postRetrieve);
+document.addEventListener('DOMContentLoaded', () => {
+    const button_submit = document.getElementById("btn");
+    button_submit.addEventListener("click", postRetrieve);
+});
 
 function postRetrieve(e) {
     e.preventDefault()
     // get user input
     let city = document.getElementById('city').value;
+    if (city.length == 0) {
+        alert("Please enter valid city");
+        return
+    }
     console.log(city);
     let dateDepart = document.getElementById('depart').value;
     console.log(dateDepart);
@@ -31,6 +33,21 @@ function postRetrieve(e) {
     const geoNamesURL = "http://api.geonames.org/searchJSON?name=" + city + "&maxRows=1&username=" + geoNameId;
     const pixaURL = "https://pixabay.com/api/?key=" + pixabayApi + "&q=" + city + "&image_type=photo";
     const weatherUrl = "http://api.weatherbit.io/v2.0/forecast/daily?key=" + weatherApi + "&lat=";
+    
+     // Create a new date instance dynamically with JS
+    let d = new Date();
+
+    // countDown
+    const timeDifference = Math.ceil(new Date(dateDepart).getTime() - d.getTime());
+    const remainingDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    document.getElementById('departure').innerHTML = remainingDays + " day(s) until departure!";
+    console.log(remainingDays);
+
+    //calculate length of trip
+    const difference = new Date(dateReturn).getTime() - new Date(dateDepart).getTime();
+    const dayDifference = difference / (1000 * 3600 * 24);
+    document.getElementById('returning').innerHTML = "Length of trip: " + dayDifference + " day(s)";
+    console.log(dayDifference);
 
     retrieveGeoData(geoNamesURL) //get data from api
     .then(function (geoNameRes) {
@@ -50,9 +67,7 @@ function postRetrieve(e) {
             });
             document.getElementById("place").innerHTML =
                 "Place destination: " + city;
-            document.getElementById("departure").innerHTML =
-                "Date departure: " + dateDepart;
-            updateUI(weatherbitRes);
+            updateUI();
         });
     });
     retrievePixaData(pixaURL)
@@ -68,7 +83,6 @@ function postRetrieve(e) {
 }
 
 // ASYNC get from APIs
-
 // Get GeoNames data
 const retrieveGeoData = async (geoNamesURL) =>{ 
     const res = await fetch(geoNamesURL);
@@ -104,6 +118,7 @@ const retrieveWeatherData = async (weathUrl) =>{
         const desc = weatherdata.data[0].weather.description;
         console.log('description:'+desc);
         const weatherbitRes = [maxTemp, minTemp, desc];
+        console.log(weatherbitRes);
         return weatherbitRes;
     } catch (error) {
         console.log('error:', error);
@@ -128,16 +143,16 @@ const retrievePixaData = async (pixaURL) => {
 // ASYNC get from Local
 
 const updateUI = async () => {
-    const request = await fetch('/trapp');
+    const request = await fetch('http://localhost:8081/trapp');
     try {
-        const allData = await request.json();
-        console.log(allData);
-        document.getElementById('max_temp').innerHTML = allData.maxTemp;
-        document.getElementById('min_temp').innerHTML = allData.minTemp;
-        document.getElementById('weatherInfo').innerHTML = allData.description;
+        const data = await request.json();
+        console.log(data);
+        document.getElementById('max_temp').innerHTML = data['max_temp'];
+        document.getElementById('min_temp').innerHTML = data['min_temp'];
+        document.getElementById('weatherInfo').innerHTML = data['description'];
     } catch (error) {
-        console.log('error:', error);
-      // appropriately handle the error
+        console.log('updateUI error:', error);
+    // appropriately handle the error
     }
 };
 
