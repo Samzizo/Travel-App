@@ -57,10 +57,12 @@ input {
     font-size: 20px;
     font-weight: bolder;
     &:hover {
-        color: #444;
+        color: #c8ca33;
     }
 }
 .pixapic {
+    width: 100%;
+    height: auto;
     border-radius: 5px;
     box-shadow: 5px 10px 10px #444;
 }
