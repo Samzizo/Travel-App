@@ -1,7 +1,6 @@
 // Require Express to run server and routes
 const express = require('express')
 const bodyParser = require('body-parser')
-const fetch = require('node-fetch');
 const path = require('path')
 const mockAPIResponse = require('./mockAPI.js')
 
