@@ -1,10 +1,10 @@
 
 // Global Variables
-const geoNameId = "sam_2021";
+const geoNameId = "**Enter Your Geo ID**";
 console.log("my geo name Id: ", geoNameId);
-const weatherApi = "84af56643f3f4f12bf081f9a1597fd25";
+const weatherApi = "***Enter your Weatherbit API***";
 console.log("my weatherAPi: ", weatherApi);
-const pixabayApi = "22840329-8fadc9e4ee6c098a494c3683b";
+const pixabayApi = "***Enter your pixabay API***";
 console.log("my piaxa pic API: ", pixabayApi);
 
 
